@@ -229,27 +229,37 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
   - Languages: Solidity, Rust, Move.  
   - Focus: Security, gas optimization, immutability.  
 - **Off-Chain Code**:  
-  - Runs outside the blockchain (e.g., front-ends, oracles).  
-  - Languages: JavaScript, Python, Go.  
+  - Runs outside the blockchain (e.g., front-ends, oracles, helpers).  
+  - Languages: Go, Rust, Javascript.  
   - Focus: Scalability, user interaction.  
-- **Sherlock’s Role**: Audits on-chain for security, off-chain for integration risks.  
 
 <!-- Speaker Notes: On-chain code, like smart contracts, lives on the blockchain—think Solidity for Ethereum. It needs to be secure and gas-efficient. Off-chain code, like JavaScript for dApp front-ends, handles user interaction but can introduce risks if it miscommunicates with the chain. Sherlock audits both layers. -->
 
 ---
 
-### Smart Contracts: Solidity
+### EVM Smart Contracts: Solidity
+
+- Purpose Specific Language for EVM Smart Contracts
 - **Use**: Ethereum, EVM chains.  
+- **Syntax:** Similiar to Javascript
 - **Security Challenges**:  
   - Reentrancy, integer overflows, gas limits.  
-- **Sherlock’s Role**:  
-  - Audit Solidity code for vulnerabilities.  
 
 <!-- Speaker Notes: Solidity is the most common smart contract language, but it’s tricky. Common bugs like reentrancy can drain funds. Sherlock’s auditors are experts in spotting these. -->
 
 ---
 
+### EVM Smart Contracts: Vyper
+
+- Purpose Specific Language for EVM Smart Contracts
+- **Use**: Ethereum, EVM chains.  
+- **Syntax:** Similiar to Python 
+- **Security Challenges**: Infamous Compiler Bug lead to Curve Exploit
+
+---
+
 ### Smart Contracts: Rust
+
 - **Use**: Solana, Polkadot, NEAR.  
 - **Security Challenges**:  
   - Memory safety, concurrency issues.  
