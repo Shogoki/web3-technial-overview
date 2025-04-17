@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: default
+title: "Web3 Technical Overview"
 paginate: true
 #header: "Web3 Technical Overview | Sherlock | Shogoki"
 footer: "Monday, March 31, 2025 | Sherlock | Shogoki"
@@ -80,140 +81,179 @@ A technical overview about the Web3 and Blockchain ecosystems.
 ### DeFi Overview: The Money LEGOs
 - **What is DeFi?**:  
   - Financial services (borrowing, trading, etc.) without centralized entities, built on blockchains like Ethereum.  
-- **Growth**:  
-  - Total Value Locked (TVL): $275M (2019) → $133B (Dec 2024).  
-- **Why It Matters**:  
-  - Transparent, accessible, efficient—removes intermediaries.  
-- **Categories Covered**: Stablecoins, Exchanges, Lending, Derivatives, Fund Management, Lottery, Payments, Insurance, Governance, Dashboards.  
+- **Mechanics**:  
+  - Smart contracts lock collateral (TVL), enabling trustless services.  
 
-![DeFi TVL](img/Defi_tvl.png)
+![height: auto](img/Defi_tvl.png)
 
 <!-- Speaker Notes: DeFi lets users access financial services without banks, using smart contracts on blockchains like Ethereum. It’s called "Money LEGOs" because you can stack services together. TVL grew from $275M in 2019 to $86B by 2021—a massive leap! We’ll cover key categories, showing how they work and where Sherlock fits in securing them. (2 min) -->
 
 ---
-
-### Stablecoins
-- **What Are They?**:  
-  - Cryptocurrencies pegged to stable assets (e.g., USD) to reduce volatility.  
-- **Types**:  
-  - Centralized (e.g., USDC, USDT): Fiat-backed, custodial risks.  
-  - Decentralized (e.g., DAI, LUSD): Collateral-backed, oracle risks.  
-- **Security Focus**:  
-  - Audits for peg stability, oracle integrity—Sherlock audited MakerDAO (DAI).  
-
-<!-- Speaker Notes: Stablecoins like USDC and DAI keep prices steady, crucial for DeFi usability. Centralized ones like USDC rely on banks, while DAI uses crypto collateral. Bugs in oracles or peg mechanisms can break them—Sherlock’s audits, like for MakerDAO, ensure they hold up. (2 min) -->
+<!-- Speaker Notes: DeFi replaces banks with smart contracts on blockchains like Ethereum—“Money LEGOs” you can stack. TVL exploded from $275M in 2019 to $86B by 2021, showing its scale. We’ll dive into key categories, focusing on how they work and Sherlock’s role in securing them. (2 min) -->
 
 ---
 
-### DEXes: On-Chain
-- **Uniswap**:  
-  - AMM model, liquidity pools—no order books, users provide liquidity.  
-  - Risks: Impermanent loss, oracle manipulation.  
+### Stablecoins: Types and Mechanics
+- **Centralized (e.g., USDC, USDT)**:  
+  - Fiat-backed (1:1 with USD in bank), custodial risks (trust in issuer).  
+- **Algorithmic (e.g., UST, pre-crash)**:  
+  - Maintain peg via algorithms (e.g., mint/burn mechanics), risks of depeg (e.g., Terra’s collapse).  
+- **CDP (Collateralized Debt Position, e.g., DAI)**:  
+  - Overcollateralized crypto (e.g., ETH), smart contract mints stablecoin, oracle risks.  
 - **Security Focus**:  
-  - Audit pool logic, price feeds—Sherlock audited Unstoppable DeFi (Margin DEX).  
+  - Audits for peg stability, oracles—Sherlock audited MakerDAO (DAI).  
 
-<!-- Speaker Notes: On-chain DEXes like Uniswap use AMMs—think of them as token vending machines. Users provide liquidity but face risks like impermanent loss. Sherlock audits these, like Unstoppable DeFi’s Margin DEX on Arbitrum, to secure pool logic and oracles. (2 min) -->
+<!-- Speaker Notes: Stablecoins reduce volatility. Centralized ones like USDC hold USD in banks—trust issues. Algorithmic ones like UST balance supply via code but can fail (Terra crashed). CDPs like DAI use crypto collateral, relying on oracles. Sherlock audited MakerDAO to secure DAI’s peg. (3 min) -->
+
+---
+
+### DEXes: On-Chain (AMM Mechanics)
+- **Uniswap**:  
+  - Automated Market Maker (AMM): No order books; uses liquidity pools.  
+  - **Constant Product Formula**: \( x \times y = k \) (e.g., ETH-DAI pool).  
+    - \( x \) and \( y \): Token quantities; \( k \): Constant.  
+- **Mechanics**:  
+  - Liquidity Providers (LPs) deposit token pairs, earn fees (~0.3% per trade).  
+  - Risks: Impermanent loss (price divergence), oracle manipulation.  
+- **Security Focus**:  
+  - Audit pool logic, price feeds—Sherlock audited DODO.  
+
+<!-- Speaker Notes: Uniswap’s AMM replaces order books with pools—LPs deposit pairs like ETH-DAI. The formula \( x \times y = k \) ensures price balance; if ETH’s price rises, LPs face impermanent loss but earn fees. Oracle bugs can skew prices. Sherlock audited Unstoppable DeFi to secure these mechanics. (3 min) -->
 
 ---
 
 ### DEXes: Off-Chain
 - **dYdX**:  
   - Off-chain order books, on-chain settlement—faster, pro-trading focus.  
+  - **Mechanics**:  
+    - Orders matched off-chain (speed), settled on-chain (security).  
+    - LPs not needed; relies on market makers.  
   - Risks: Front-running, off-chain data integrity.  
 - **Security Focus**:  
-  - Audit matching engines, settlement logic—Sherlock audited dYdX.  
+  - Audit matching engines, settlement logic—Sherlock audited 100X.  
 
-<!-- Speaker Notes: dYdX blends off-chain speed with on-chain security—great for traders but risks front-running. Sherlock’s audit of dYdX ensures the matching engine and settlement are tamper-proof. (2 min) -->
+<!-- Speaker Notes: dYdX matches orders off-chain for speed, settles on-chain for security—no LPs, just market makers. Front-running can occur if off-chain data is gamed. Sherlock’s audit of dYdX ensures the system’s integrity. (2 min) -->
 
 ---
 
 ### Lending & Borrowing
+
 - **Protocols (e.g., Aave, Compound)**:  
-  - Overcollateralized loans, flash loans (Aave), algorithmic rates (Compound).  
+  - **Mechanics**:  
+    - Overcollateralized loans: Lock $150 ETH to borrow $100 DAI.  
+    - Flash loans (Aave): Borrow millions, repay in same tx (arbitrage).  
+    - Rates (Compound): Adjust via supply/demand (e.g., high demand = higher rates).  
   - Risks: Flash loan attacks, liquidation bugs, rate manipulation.  
 - **Security Focus**:  
-  - Audits for loan logic, collateral systems—Sherlock audited Aave, Compound.  
+  - Audits for loan logic, collateral systems—Sherlock audited Aave, Compound-forks...  
 
-<!-- Speaker Notes: Aave and Compound let you borrow by locking crypto—flash loans are instant but risky; rates adjust dynamically but can be gamed. Sherlock’s audits of Aave and Compound ensure these systems are secure. (2 min) -->
+<!-- Speaker Notes: Aave and Compound let you borrow by locking crypto—e.g., $150 ETH for $100 DAI. Flash loans allow instant borrowing if repaid in one tx—great for arbitrage, risky if exploited. Rates adjust dynamically but can be gamed. Sherlock audited both protocols. (3 min) -->
 
 ---
 
 ### Derivatives
-- **Synthetix**:  
-  - Synthetic assets (Synths) track real-world assets (e.g., stocks, gold).  
-  - Risks: Oracle failures, collateral mismanagement.  
+- **GMX**:  
+  - **Mechanics**:  
+    - Perpetual futures on Arbitrum/Avalanche, up to 50x leverage.  
+    - Uses GLP pool (multi-asset: ETH, BTC, stablecoins) as counterparty; zero-price impact via Chainlink oracles.  
+  - Risks: Oracle latency (slippage in volatile markets), liquidity scaling issues.  
 - **Security Focus**:  
-  - Audits for Synth creation, oracle feeds—Sherlock audited Symmio (OTC derivatives).  
+  - Audits for oracle integration, pool mechanics—Sherlock audited GMX and other derivatives protocols. 
 
-<!-- Speaker Notes: Derivatives like Synthetix’s Synths let you trade real-world assets on-chain—think gold without holding it. Oracles can fail, though. Sherlock audited Symmio, a derivatives platform, to secure these mechanisms. (2 min) -->
+<!-- Speaker Notes: GMX offers perpetual futures with up to 50x leverage—traders bet against the GLP pool, which holds assets like ETH and BTC. Chainlink oracles ensure zero-price impact, but latency can cause slippage. Sherlock audits these systems for robustness. (2 min) -->
+
 
 ---
 
-### Fund Management
+### Fund Management / DeFi Strategies
 
-- **TokenSets**:  
-  - Passive strategies (e.g., Index Sets, Yield Farming Sets).  
+- **Index**:  
+  - **Mechanics**:  
+    - Passive strategies: Index Sets (track baskets), Yield Farming Sets (optimize returns).  
+    - Smart contracts rebalance based on predefined rules.  
   - Risks: Strategy logic errors, market volatility exposure.  
 - **Security Focus**:  
-  - Audits for automated strategies—Sherlock audited PinLink (RWA platform).  
+  - Audits for automated strategies—Sherlock audited Index CooP
 
-<!-- Speaker Notes: TokenSets automates investing—like index funds but decentralized. Errors in strategy code can hurt returns. Sherlock’s audit of PinLink, which manages tokenized assets, ensures these systems are safe. (2 min) -->
+<!-- Speaker Notes: TokenSets automates investing—Index Sets track markets, Yield Sets chase returns via smart contracts. Bugs in rebalancing logic can hurt users. Sherlock audited PinLink, ensuring these strategies are safe. (2 min) -->
 
 ---
 
-### Lottery / Games
-
+### Lottery
 - **PoolTogether**:  
-  - No-loss lotteries: Pool funds, earn interest, random winner gets interest.  
+  - **Mechanics**:  
+    - No-loss lotteries: Users deposit (e.g., DAI), funds earn interest in lending pools (e.g., Compound).  
+    - Interest goes to a random winner; users get deposits back.  
   - Risks: Randomness bugs, pool mismanagement.  
 - **Security Focus**:  
-  - Audits for fairness, fund handling—Sherlock audited PoolTogether or Yolo.  
+  - Audits for fairness, fund handling—Sherlock audited PoolTogether.  
 
-<!-- Speaker Notes: PoolTogether’s no-loss lotteries are fun—your ticket gets refunded, but a winner takes the interest. Randomness bugs can skew results. Sherlock audited PoolTogether to ensure fairness and security. (2 min) -->
+<!-- Speaker Notes: PoolTogether pools deposits, earns interest via lending, and awards it to a winner—everyone else gets their deposit back. Randomness bugs can skew winners. Sherlock audited PoolTogether for fairness. (2 min) -->
 
 ---
 
 ### Payments
-- **Superform**:  
-  - Streaming payments (e.g., pay-per-second for services).  
+- **Sablier**:  
+  - **Mechanics**:  
+    - Streaming payments: Pay-per-second (e.g., $1/sec for a service).  
+    - Smart contract controls flow, stops if conditions fail.  
   - Risks: Streaming logic errors, fund leakage.  
 - **Security Focus**:  
   - Audits for streaming mechanisms—Sherlock audited payment protocols.  
 
-<!-- Speaker Notes: Sablier reimagines payments as streams—think paying for Netflix by the second. Bugs can drain funds unexpectedly. Sherlock audits streaming logic to prevent issues. (2 min) -->
+<!-- Speaker Notes: Sablier streams payments in real-time—think paying by the second. Smart contracts manage the flow, but bugs can drain funds. Sherlock audits these streaming systems for security. (2 min) -->
 
 ---
 
 ### Insurance
-- **Sherlock or Nexus Mutual**:  
-  - Covers smart contract risks (e.g., bug-bounty, hacks).  
-  - Risks: Claim assessment flaws, token economics issues.  
+- **Sherlock**:  
+  - **Mechanics**:  
+    - Covers smart contract risks: Protocols deposit funds, get coverage for hacks (e.g., up to $10M).  
+    - Stakers provide capital, earn premiums; claims handled via risk assessment.  
+  - Risks: Claim assessment flaws, insufficient staked capital.  
 - **Security Focus**:  
-  - Audits for coverage logic, token models—Sherlock .  
+  - Sherlock audits its own coverage logic, ensuring robust protection for DeFi protocols.  
 
-<!-- Speaker Notes: Nexus Mutual insures against smart contract hacks—a must for DeFi users. Flaws in claims or token models can break trust. Sherlock’s audit of Nexus Mutual ensures reliability. (2 min) -->
+<!-- Speaker Notes: Sherlock’s coverage protects protocols from hacks—protocols deposit funds, stakers back coverage, and claims are assessed. Insufficient capital or flawed assessments are risks. Sherlock audits its own system to ensure reliability. (2 min) -->
 
 ---
 
-### DAOs and Governance
-- **Aragon, Snapshot**:  
-  - DAOs: Community-run protocols; Governance: Token-based voting.  
-  - Risks: Vote manipulation, proposal exploits.  
+### DAOs and Governance: veTokenomics
+- **Aragon, Snapshot, Curve**:  
+  - **Mechanics**:  
+    - DAOs: Community-run via token voting (Aragon).  
+    - veTokenomics (Curve): Vote-escrowed tokens (e.g., veCRV) lock CRV for voting power, directing emissions (gauge weights).  
+  - Risks: Vote manipulation, proposal exploits, veCRV centralization.  
 - **Security Focus**:  
   - Audits for voting, execution—Sherlock audited Allo V2 (Gitcoin grants).  
 
-<!-- Speaker Notes: DAOs like Aragon and tools like Snapshot enable community governance—think decentralized boardrooms. Vote manipulation is a risk. Sherlock audited Allo V2 for Gitcoin’s grants, securing voting systems. (2 min) -->
+<!-- Speaker Notes: DAOs like Aragon use token voting for governance. Curve’s veTokenomics locks CRV into veCRV for voting—longer locks, more power to direct rewards. Risks include vote gaming or centralization. Sherlock audited Allo V2 for secure voting. (3 min) -->
 
 ---
 
-### DeFi Dashboards
-- **Zapper**:  
-  - Aggregates DeFi activities (e.g., track assets across protocols).  
-  - Risks: Data integration errors, API vulnerabilities.  
+### Yield Aggregators
+- **Yearn Finance**:  
+  - **Mechanics**:  
+    - Automates yield farming: Deposits (e.g., DAI) moved to highest-yield protocols (e.g., Aave, Compound).  
+    - Vaults use strategies, earn fees (e.g., 2% performance fee).  
+  - Risks: Strategy bugs, underlying protocol exploits.  
 - **Security Focus**:  
-  - Audits for data accuracy, API security—Sherlock audited dashboard integrations.  
+  - Audits for strategy logic, integrations—Sherlock audited yield systems.  
 
-<!-- Speaker Notes: Zapper simplifies DeFi by showing all your assets in one place. Data errors or API issues can mislead users. Sherlock audits these integrations to ensure accuracy and security. (2 min) -->
+<!-- Speaker Notes: Yearn optimizes returns by shifting funds to high-yield protocols—vaults execute strategies, users earn fees. Bugs in strategies or exploits in integrated protocols are risks. Sherlock audits these systems for safety. (2 min) -->
+
+---
+
+### Staking
+- **Lido Finance**:  
+  - **Mechanics**:  
+    - Proof-of-Stake (PoS): Stake ETH to validate, earn rewards (e.g., Ethereum).  
+    - Liquid Staking Derivatives (LSDs): Stake ETH, get stETH (1:1 peg), use in DeFi (e.g., lending).  
+  - Risks: Depegging (stETH vs. ETH), slashing (validator penalties).  
+- **Security Focus**:  
+  - Audits for staking logic, derivative issuance—Sherlock audited staking protocols. 
+
+<!-- Speaker Notes: Staking in PoS like Ethereum earns rewards but locks assets. Lido’s LSDs like stETH let you stake ETH and use it in DeFi—e.g., lending—while earning rewards. Risks include depegging or slashing. Sherlock audits these systems for security. (2 min) -->
 
 ---
 ## 2. Blockchain Ecosystem Overview - Non-EVM Chains
@@ -498,6 +538,25 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 
 ---
 
+
+### Languages Overview
+| **Language** | **Primary Usage**         | **Blockchains**         | **Security Considerations**         |
+|--------------|---------------------------|-------------------------|-------------------------------------|
+| Solidity     | Smart Contracts           | Ethereum, EVM chains    | Reentrancy, gas limits, overflows   |
+| Rust         | Smart Contracts, Clients  | Solana, Polkadot, NEAR  | Concurrency, memory safety          |
+| Go           | Clients, AppChains        | Ethereum (Geth), Cosmos | Consensus bugs, DoS attacks         |
+| Move         | Smart Contracts           | Aptos, Sui              | Logic errors, upgrade issues        |
+| Cairo        | Smart Contracts           | StarkNet (L2)           | Cryptographic proofs, logic flaws   |
+| Clarity      | Smart Contracts           | Stacks (Bitcoin L1)     | Design flaws, Bitcoin integration   |
+| Sway         | Smart Contracts           | Fuel (L2)               | Concurrency, FuelVM-specific risks  |
+| FunC         | Smart Contracts           | TON                     | Concurrency in sharded systems      |
+| Haskell      | Smart Contracts           | Cardano                 | Logic bugs despite formal methods   |
+| C++          | Infrastructure, Contracts | EOS                     | System-level vulnerabilities        |
+
+<!-- Speaker Notes: This table summarizes Web3 languages—Solidity dominates Ethereum, Rust powers Solana, Go drives Cosmos, and newer ones like Move and Cairo target specific chains. Each has unique risks, from reentrancy in Solidity to concurrency in FunC. Sherlock audits them all to secure Web3. -->
+
+
+-- 
 
 
 ## 4. Quick Q&A
