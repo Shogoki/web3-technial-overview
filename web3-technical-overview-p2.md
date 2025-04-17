@@ -263,14 +263,13 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 - **Use**: Solana, Polkadot, NEAR.  
 - **Security Challenges**:  
   - Memory safety, concurrency issues.  
-- **Sherlock’s Role**:  
-  - Audit Rust-based programs for logic flaws.  
 
 <!-- Speaker Notes: Rust is safer than Solidity but not immune to bugs. Concurrency in Solana can lead to race conditions—Sherlock audits these high-performance contracts. -->
 
 ---
 
 ### Clients/L2s: Go and Rust
+
 - **Go**:  
   - Ethereum Geth, Optimism.  
   - Risks: Consensus bugs, DoS attacks.  
@@ -283,6 +282,7 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 ---
 
 ### AppChains: Go
+
 - **Cosmos SDK**:  
   - Build custom chains with Tendermint.  
 - **Security Focus**:  
@@ -292,7 +292,8 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 
 ---
 
-### Aptos/Sui: Move
+### Aptos/Sui Smart Contracts: Move
+
 - **Use**: Aptos, Sui blockchains.  
 - **Features**:  
   - Resource-oriented, prevents reentrancy by design.  
@@ -317,7 +318,8 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 ---
 
 ### Stacks: Clarity
-- **Use**: Stacks (Bitcoin L1).  
+
+- **Use**: Stacks (Bitcoin L2).  
 - **Features**:  
   - Decidable language, predictable execution.  
   - Private functions by default, enhances security.  
@@ -329,6 +331,7 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 ---
 
 ### Fuel: Sway
+
 - **Use**: Fuel (Ethereum L2).  
 - **Features**:  
   - Rust-based, for high-performance smart contracts.  
@@ -341,13 +344,12 @@ TON scales with sharding, tied to Telegram for mass adoption—FunC needs concur
 ---
 
 ### TON and Beyond
+
 - **TON (Solidity, FunC)**:  
   - Solidity for smart contracts, FunC for high-performance TON apps.  
   - Risks: Scalability focus, but complex concurrency.  
 - **Others**:  
   - **Haskell (Cardano)**: Functional, for Plutus dApps.  
-  - **C++ (EOS)**: High performance, system-level control.  
-- **Sherlock’s Role**: Audits across ecosystems for diverse risks.  
 
 <!-- Speaker Notes: TON, tied to Telegram, uses Solidity and FunC for scalability—FunC’s performance focus needs concurrency audits. Haskell powers Cardano’s Plutus, C++ drives EOS—each has unique risks. Sherlock audits across these ecosystems. -->
 
