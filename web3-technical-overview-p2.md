@@ -86,9 +86,6 @@ A technical overview about the Web3 and Blockchain ecosystems.
 
 ![height: auto](img/Defi_tvl.png)
 
-<!-- Speaker Notes: DeFi lets users access financial services without banks, using smart contracts on blockchains like Ethereum. It’s called "Money LEGOs" because you can stack services together. TVL grew from $275M in 2019 to $86B by 2021—a massive leap! We’ll cover key categories, showing how they work and where Sherlock fits in securing them. (2 min) -->
-
----
 <!-- Speaker Notes: DeFi replaces banks with smart contracts on blockchains like Ethereum—“Money LEGOs” you can stack. TVL exploded from $275M in 2019 to $86B by 2021, showing its scale. We’ll dive into key categories, focusing on how they work and Sherlock’s role in securing them. (2 min) -->
 
 ---
@@ -110,7 +107,7 @@ A technical overview about the Web3 and Blockchain ecosystems.
 ### DEXes: On-Chain (AMM Mechanics)
 - **Uniswap**:  
   - Automated Market Maker (AMM): No order books; uses liquidity pools.  
-  - **Constant Product Formula**: \( x \times y = k \) (e.g., ETH-DAI pool).  
+  - **Constant Product Formula**: \( x \* = k \) (e.g., ETH-DAI pool).  
     - \( x \) and \( y \): Token quantities; \( k \): Constant.  
 - **Mechanics**:  
   - Liquidity Providers (LPs) deposit token pairs, earn fees (~0.3% per trade).  
@@ -162,22 +159,8 @@ A technical overview about the Web3 and Blockchain ecosystems.
 
 <!-- Speaker Notes: GMX offers perpetual futures with up to 50x leverage—traders bet against the GLP pool, which holds assets like ETH and BTC. Chainlink oracles ensure zero-price impact, but latency can cause slippage. Sherlock audits these systems for robustness. (2 min) -->
 
-
 ---
 
-### Fund Management / DeFi Strategies
-
-- **Index**:  
-  - **Mechanics**:  
-    - Passive strategies: Index Sets (track baskets), Yield Farming Sets (optimize returns).  
-    - Smart contracts rebalance based on predefined rules.  
-  - Risks: Strategy logic errors, market volatility exposure.  
-- **Security Focus**:  
-  - Audits for automated strategies—Sherlock audited Index CooP
-
-<!-- Speaker Notes: TokenSets automates investing—Index Sets track markets, Yield Sets chase returns via smart contracts. Bugs in rebalancing logic can hurt users. Sherlock audited PinLink, ensuring these strategies are safe. (2 min) -->
-
----
 
 ### Lottery
 - **PoolTogether**:  
@@ -228,6 +211,20 @@ A technical overview about the Web3 and Blockchain ecosystems.
   - Audits for voting, execution—Sherlock audited Allo V2 (Gitcoin grants).  
 
 <!-- Speaker Notes: DAOs like Aragon use token voting for governance. Curve’s veTokenomics locks CRV into veCRV for voting—longer locks, more power to direct rewards. Risks include vote gaming or centralization. Sherlock audited Allo V2 for secure voting. (3 min) -->
+
+---
+
+### Fund Management / DeFi Strategies
+
+- **Index**:  
+  - **Mechanics**:  
+    - Passive strategies: Index Sets (track baskets), Yield Farming Sets (optimize returns).  
+    - Smart contracts rebalance based on predefined rules.  
+  - Risks: Strategy logic errors, market volatility exposure.  
+- **Security Focus**:  
+  - Audits for automated strategies—Sherlock audited Index CooP
+
+<!-- Speaker Notes: TokenSets automates investing—Index Sets track markets, Yield Sets chase returns via smart contracts. Bugs in rebalancing logic can hurt users. Sherlock audited PinLink, ensuring these strategies are safe. (2 min) -->
 
 ---
 
