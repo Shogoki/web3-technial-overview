@@ -4,7 +4,7 @@ theme: default
 title: "Web3 Technical Overview"
 paginate: true
 #header: "Web3 Technical Overview | Sherlock | Shogoki"
-footer: "Monday, March 31, 2025 | Sherlock | Shogoki"
+footer: "Monday, April 17, 2025 | Sherlock | Shogoki"
 style: |
   /* Sherlock-inspired theme with corrected purple and readable table */
   section {
@@ -68,9 +68,9 @@ style: |
 
 # Web3 Technical Overview - Part2
 
-**Date:** Monday, March 31, 2025  
+**Date:** Monday, April 17, 2025  
 
-A technical overview about the Web3 and Blockchain ecosystems.
+Overview about DeFi
 
 ---
 
